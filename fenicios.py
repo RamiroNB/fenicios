@@ -11,7 +11,6 @@ def main():
         for i, line in enumerate(lines):
             line = line.replace("\n", "")
             n_line = []
-            # line = [*line]
             for j, colum in enumerate(line):
                 n_line.append(colum)
                 if colum == "1":
@@ -33,28 +32,6 @@ def main():
                 if colum == "9":
                     ports["9"] = [i, j]
             f_map.append(n_line)
-            # f_map.append(line)
-
-    # for i, line in enumerate(f_map):
-    #     for j, colum in enumerate(line):
-    #         if colum == "1":
-    #             ports["1"] = [i, j]
-    #         if colum == "2":
-    #             ports["2"] = [i, j]
-    #         if colum == "3":
-    #             ports["3"] = [i, j]
-    #         if colum == "4":
-    #             ports["4"] = [i, j]
-    #         if colum == "5":
-    #             ports["5"] = [i, j]
-    #         if colum == "6":
-    #             ports["6"] = [i, j]
-    #         if colum == "7":
-    #             ports["7"] = [i, j]
-    #         if colum == "8":
-    #             ports["8"] = [i, j]
-    #         if colum == "9":
-    #             ports["9"] = [i, j]
 
     print(len(f_map))
     print(len(f_map[0]))
