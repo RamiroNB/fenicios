@@ -1,10 +1,14 @@
 import time
 
 
+def find_voyage_cost(f_map, ports, start, end):
+    pass
+
+
 def main():
     f_map = []
     ports = dict()
-    with open("casos/caso20.txt", "r") as f:
+    with open("casos/caso01.txt", "r") as f:
         lines = f.readlines()
         print(lines[0])
         lines.remove(lines[0])
@@ -33,19 +37,20 @@ def main():
                     ports["9"] = [i, j]
             f_map.append(n_line)
 
-    print(len(f_map))
-    print(len(f_map[0]))
-    print(len(ports))
-    print(ports)
-    print(f_map[ports["1"][0]][ports["1"][1]])
-    print(f_map[ports["2"][0]][ports["2"][1]])
-    print(f_map[ports["3"][0]][ports["3"][1]])
-    print(f_map[ports["4"][0]][ports["4"][1]])
-    print(f_map[ports["5"][0]][ports["5"][1]])
-    print(f_map[ports["6"][0]][ports["6"][1]])
-    print(f_map[ports["7"][0]][ports["7"][1]])
-    print(f_map[ports["8"][0]][ports["8"][1]])
-    print(f_map[ports["9"][0]][ports["9"][1]])
+    # print(len(f_map))
+    # print(len(f_map[0]))
+    # print(len(ports))
+    # print(ports)
+    # print(f_map[ports["1"][0]][ports["1"][1]])
+    # print(f_map[ports["2"][0]][ports["2"][1]])
+    # print(f_map[ports["3"][0]][ports["3"][1]])
+    # print(f_map[ports["4"][0]][ports["4"][1]])
+    # print(f_map[ports["5"][0]][ports["5"][1]])
+    # print(f_map[ports["6"][0]][ports["6"][1]])
+    # print(f_map[ports["7"][0]][ports["7"][1]])
+    # print(f_map[ports["8"][0]][ports["8"][1]])
+    # print(f_map[ports["9"][0]][ports["9"][1]])
+    # print(f_map)
 
 
 if __name__ == "__main__":
