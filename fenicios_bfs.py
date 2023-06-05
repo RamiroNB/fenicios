@@ -92,6 +92,7 @@ def find_voyage_cost(
     return -1
 
 
+start = time.time()
 total = 0
 currrent = 0
 for i in range(8):
@@ -115,6 +116,8 @@ for i in range(8):
         last_valid = i + 2
         total = total + currrent
 total = total + find_voyage_cost(f_map, ports, str(last_valid), str(1))
+end = time.time()
 
 
 print(total)
+print(end - start)

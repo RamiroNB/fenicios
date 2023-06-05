@@ -6,28 +6,13 @@ dr = [-1, +1, 0, 0]  # up down right left
 dc = [0, 0, +1, -1]  # up down right left
 
 
-class Node:
-    def __init__(self, cost, move_count, pos) -> None:
-        self.cost = cost
-        self.move_count = move_count
-        self.pos = pos
-
-    def __gt__(self, other):
-        return self.cost > other.cost
-
-    def __lt__(self, other):
-        return self.cost < other.cost
-
-    def __eq__(self, __value: object) -> bool:
-        return self.cost == __value.cost
-
-
 def find_voyage_cost_a_star(f_map, ports, start, end):
     start = ports[start]
     end = ports[end]
     count = 0
     pq = PriorityQueue()
-    pq.put(Node(float("inf"), count, tuple(start)))
+    pq.put((0, count, tuple(start)))
+    came_from = {}
     g_score = {}
     f_score = {}
     for i, row in enumerate(f_map):
@@ -39,7 +24,7 @@ def find_voyage_cost_a_star(f_map, ports, start, end):
     open_set_hash = {tuple(start)}
 
     while not pq.empty():
-        current = pq.get().pos
+        current = pq.get()[2]
         open_set_hash.remove(current)
 
         if current == tuple(end):
@@ -49,13 +34,14 @@ def find_voyage_cost_a_star(f_map, ports, start, end):
             temp_g_score = g_score[current] + 1
 
             if temp_g_score < g_score[tuple(neighbor)]:
+                came_from[tuple(neighbor)] = current
                 g_score[tuple(neighbor)] = temp_g_score
                 f_score[tuple(neighbor)] = temp_g_score + manhattan_distance(
                     neighbor, end
                 )
                 if tuple(neighbor) not in open_set_hash:
                     count += 1
-                    pq.put(Node(g_score[tuple(neighbor)], count, tuple(neighbor)))
+                    pq.put((f_score[tuple(neighbor)], count, tuple(neighbor)))
                     open_set_hash.add(tuple(neighbor))
 
     return -1
@@ -133,10 +119,8 @@ def main():
             last_valid = i + 2
             total = total + currrent
     total = total + find_voyage_cost_a_star(f_map, ports, str(last_valid), str(1))
-    end = time.time()
 
     print(total)
-    print(end - start)
 
 
 if __name__ == "__main__":
